@@ -1,0 +1,624 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portafolio personal y creativo de fotografía y diseño.">
+<title>Liton | Personal Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #101010;
+  --panel: #181818;
+  --white: #f5f4f0;
+  --muted: #929292;
+  --accent: #c8b99c;
+  --border: #292929;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1100px, 90%);
+  margin: auto;
+}
+
+header {
+  padding: 25px 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.logo span { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  font-size: 12px;
+  color: #bbb;
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+.menu-btn {
+  display: none;
+  background: none;
+  color: white;
+  border: 0;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.hero {
+  min-height: 610px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 55px;
+  padding: 70px 0;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 6vw, 76px);
+  line-height: 1.08;
+  letter-spacing: -3px;
+  margin-bottom: 22px;
+}
+
+.hero h1 em {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 14px;
+  max-width: 430px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 25px;
+  border: 1px solid var(--accent);
+  color: var(--white);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: .3s;
+}
+
+.btn:hover {
+  background: var(--accent);
+  color: #111;
+}
+
+.hero-image {
+  position: relative;
+  height: 460px;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.8) grayscale(15%);
+}
+
+.hero-image::after {
+  content: "CREATIVE PORTFOLIO — 2026";
+  position: absolute;
+  bottom: -25px;
+  right: 0;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+section { padding: 90px 0; }
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 40px;
+}
+
+.section-heading h2 {
+  font-size: 36px;
+  letter-spacing: -1px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.skills {
+  background: var(--panel);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.skill-card {
+  padding: 30px 25px;
+  background: #202020;
+  border: 1px solid #303030;
+  transition: .3s;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+.skill-number {
+  color: var(--accent);
+  font-size: 12px;
+  margin-bottom: 25px;
+}
+
+.skill-card h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.skill-card p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 65px;
+}
+
+.about-image {
+  height: 420px;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(35%);
+}
+
+.about-text h2 {
+  font-size: 38px;
+  line-height: 1.2;
+  margin-bottom: 25px;
+}
+
+.about-text p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.stats {
+  display: flex;
+  gap: 35px;
+  margin-top: 35px;
+}
+
+.stat strong {
+  display: block;
+  color: var(--accent);
+  font-size: 27px;
+}
+
+.stat span {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.portfolio {
+  background: var(--panel);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  height: 280px;
+  background: #252525;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+.gallery-item div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 25px 15px 15px;
+  background: linear-gradient(transparent, rgba(0,0,0,.85));
+  font-size: 12px;
+}
+
+.gallery-item small {
+  display: block;
+  color: #ccc;
+  font-size: 10px;
+}
+
+.contact {
+  text-align: center;
+  padding: 110px 0;
+}
+
+.contact h2 {
+  font-size: clamp(35px, 6vw, 60px);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.contact p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 30px;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 25px 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.socials {
+  display: flex;
+  gap: 20px;
+}
+
+.socials a:hover { color: var(--accent); }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: .7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media(max-width: 750px) {
+  .menu-btn { display: block; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 75px;
+    left: 0;
+    right: 0;
+    padding: 25px;
+    background: #181818;
+    flex-direction: column;
+    z-index: 10;
+    text-align: center;
+  }
+
+  .nav-links.active { display: flex; }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 65px 0;
+  }
+
+  .hero-image { height: 390px; }
+
+  .skill-grid { grid-template-columns: 1fr; }
+
+  .about-grid { grid-template-columns: 1fr; gap: 35px; }
+
+  .about-image { height: 350px; }
+
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+
+  .gallery-item { height: 210px; }
+
+  .section-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .socials { justify-content: center; }
+}
+
+@media(max-width: 430px) {
+  .gallery { grid-template-columns: 1fr; }
+  .gallery-item { height: 280px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a href="#" class="logo">Liton<span>.</span></a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Inicio</a></li>
+        <li><a href="#services">Servicios</a></li>
+        <li><a href="#about">Sobre mí</a></li>
+        <li><a href="#portfolio">Portafolio</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="container hero" id="home">
+  <div class="hero-text reveal">
+    <div class="eyebrow">Diseñador creativo & fotógrafo</div>
+    <h1>I'm a <em>Creative</em><br>Designer.</h1>
+    <p>
+      Hola, soy Alex. Me apasiona crear experiencias visuales,
+      fotografías y diseños digitales que transmitan emociones
+      y cuenten historias.
+    </p>
+    <a href="#portfolio" class="btn">Ver mi trabajo →</a>
+  </div>
+
+  <div class="hero-image reveal">
+    <img
+      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1000&q=85"
+      alt="Retrato artístico"
+    >
+  </div>
+</section>
+
+<section class="skills" id="services">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div>
+        <div class="eyebrow">Lo que hago</div>
+        <h2>My Expertise</h2>
+      </div>
+      <p>Creatividad en cada detalle.</p>
+    </div>
+
+    <div class="skill-grid">
+      <article class="skill-card reveal">
+        <div class="skill-number">01 /</div>
+        <h3>Diseño gráfico</h3>
+        <p>Identidad visual, branding, composiciones y diseño creativo.</p>
+      </article>
+
+      <article class="skill-card reveal">
+        <div class="skill-number">02 /</div>
+        <h3>Fotografía</h3>
+        <p>Retratos, fotografía editorial, producto y estilo de vida.</p>
+      </article>
+
+      <article class="skill-card reveal">
+        <div class="skill-number">03 /</div>
+        <h3>Diseño web</h3>
+        <p>Diseño de interfaces modernas, páginas web y experiencias digitales.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="container" id="about">
+  <div class="about-grid">
+    <div class="about-image reveal">
+      <img
+        src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=900&q=85"
+        alt="Retrato del diseñador"
+      >
+    </div>
+
+    <div class="about-text reveal">
+      <div class="eyebrow">Conóceme</div>
+      <h2>Creativity is my way of life.</h2>
+      <p>
+        Creo en el poder de las imágenes y el diseño para comunicar
+        ideas. Mi trabajo combina creatividad, sensibilidad visual
+        y atención a los pequeños detalles.
+      </p>
+      <p>
+        Cada proyecto es una oportunidad para experimentar,
+        aprender y construir algo único.
+      </p>
+
+      <div class="stats">
+        <div class="stat">
+          <strong>05+</strong>
+          <span>Años de experiencia</span>
+        </div>
+        <div class="stat">
+          <strong>80+</strong>
+          <span>Proyectos creativos</span>
+        </div>
+        <div class="stat">
+          <strong>35+</strong>
+          <span>Clientes felices</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div>
+        <div class="eyebrow">Mis proyectos</div>
+        <h2>Selected Works</h2>
+      </div>
+      <p>Una selección de trabajos creativos.</p>
+    </div>
+
+    <div class="gallery">
+      <article class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=700&q=85" alt="Retrato editorial">
+        <div>Editorial Portrait <small>Photography</small></div>
+      </article>
+
+      <article class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700&q=85" alt="Fotografía de moda">
+        <div>Fashion Story <small>Fashion</small></div>
+      </article>
+
+      <article class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=700&q=85" alt="Diseño de interiores">
+        <div>Creative Space <small>Interior Design</small></div>
+      </article>
+
+      <article class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=700&q=85" alt="Estilo y moda">
+        <div>Minimal Style <small>Art Direction</small></div>
+      </article>
+
+      <article class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700&q=85" alt="Retrato femenino">
+        <div>Natural Beauty <small>Portraits</small></div>
+      </article>
+
+      <article class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=700&q=85" alt="Composición artística">
+        <div>Visual Composition <small>Creative Design</small></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="contact container" id="contact">
+  <div class="eyebrow">Trabajemos juntos</div>
+  <h2>Have a project<br><em>in mind?</em></h2>
+  <p>Estoy disponible para nuevos proyectos y colaboraciones creativas.</p>
+  <a href="mailto:hola@tudominio.com" class="btn">Hablemos →</a>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-content">
+    <span>© <span id="year"></span> Liton. Todos los derechos reservados.</span>
+    <div class="socials">
+      <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://behance.net/" target="_blank" rel="noopener">Behance</a>
+      <a href="https://linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+
+menuBtn.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+  });
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(element => {
+  observer.observe(element);
+});
+</script>
+
+</body>
+</html>
